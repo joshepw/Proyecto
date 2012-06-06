@@ -18,22 +18,22 @@ public class piezaDeath extends Pieza{
 
     @Override
     public int attackZombie() {
-        return 2;
+        return -2;
     }
 
     @Override
     public int attackWolf() {
-        return 4;
+        return -4;
     }
 
     @Override
     public int attackVampire() {
-        return 3;
+        return -3;
     }
 
     @Override
     public int attackDeath() {
-        return 2;
+        return -2;
     }
 
     @Override

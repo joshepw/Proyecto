@@ -24,18 +24,18 @@ public class piezaVampire extends Pieza{
     @Override
     public int attackWolf() {
         setLP(1);
-        return 2;
+        return -2;
     }
 
     @Override
     public int attackVampire() {
         setLP(2);
-        return 3;
+        return -3;
     }
 
     @Override
     public int attackDeath() {
-        return 0;
+        return -2;
     }
 
     @Override

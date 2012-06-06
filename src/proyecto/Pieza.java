@@ -28,7 +28,7 @@ public abstract class Pieza {
     
     public boolean setLP(int i){
         if(LP > 0){
-            LP = i;
+            LP += i;
             return true;
         }
         return false;
@@ -52,4 +52,9 @@ public abstract class Pieza {
     public abstract int attackDeath();
     
     public abstract ArrayList<Position> movePieza();
+    
+    @Override
+    public String toString(){
+        return "Pieza:"+tipo.name()+" / Posicion X:"+posPieza.x+" Y:"+posPieza.y+" / LP:"+LP;
+    }
 }
