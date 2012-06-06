@@ -51,7 +51,7 @@ public abstract class Pieza {
     public abstract int attackVampire();
     public abstract int attackDeath();
     
-    public abstract ArrayList<Position> movePieza();
+    public abstract ArrayList<Position> movesPieza();
     
     @Override
     public String toString(){

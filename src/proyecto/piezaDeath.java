@@ -37,7 +37,7 @@ public class piezaDeath extends Pieza{
     }
 
     @Override
-    public ArrayList<Position> movePieza() {
+    public ArrayList<Position> movesPieza() {
         return moves;
     }
 }
