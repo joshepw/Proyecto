@@ -8,16 +8,27 @@ Proyecto Programacion II
 
   JOSE IVAN SUAZO
 
-  OSCAR RUIZ
+  GADIEL ORTEZ
 
-  ANGELA CASTILLO
+  JEAN MICHAEL
 
 =============================
 
 Change Log 
+
+0.2 - 6/6/2012
+
+- Acutualizada verificacion de movimientos
+- Agregado el Tablero
+- Funcion TwoPlayers
+- Funciones Random Jugador
+- Inicializacion de piezas en el tablero
+- Verificacion de Usuarios
+- Optimizacion de Codigo
 
 0.1 - 5/6/2012
 
 - Agregada las piezas
 - Agregada las funciones de ataques
 - Se inizializa el proyecto
+- Codigo Volatil para uso externo

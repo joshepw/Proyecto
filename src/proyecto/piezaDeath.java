@@ -1,15 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyecto;
 
-import java.util.ArrayList;
-
-/**
- *
- * @author joxhe
- */
 public class piezaDeath extends Pieza{
     public piezaDeath(int pos_x,int pos_y,boolean player){
         super(15,pos_x,pos_y,player);
@@ -34,10 +24,5 @@ public class piezaDeath extends Pieza{
     @Override
     public int attackDeath() {
         return -2;
-    }
-
-    @Override
-    public ArrayList<Position> movesPieza() {
-        return moves;
     }
 }

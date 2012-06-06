@@ -1,22 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package proyecto;
 
-//import java.util.ArrayList;
-
-import java.util.ArrayList;
-
-
-/**
- *
- * @author joxhe
- */
 public abstract class Pieza {
     protected int LP;
     protected Position posPieza;
-    protected ArrayList<Position> moves;
     protected boolean nPlayer;
     protected piezaTipo tipo;
     
@@ -46,12 +32,14 @@ public abstract class Pieza {
         posPieza = pos;
     }
     
-    public abstract int attackZombie();    
-    public abstract int attackWolf();    
+    public boolean isPlayer1P(){
+        return nPlayer;
+    }
+    
+    public abstract int attackZombie();
+    public abstract int attackWolf();
     public abstract int attackVampire();
     public abstract int attackDeath();
-    
-    public abstract ArrayList<Position> movesPieza();
     
     @Override
     public String toString(){
