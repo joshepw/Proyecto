@@ -43,6 +43,6 @@ public abstract class Pieza {
     
     @Override
     public String toString(){
-        return "Pieza:"+tipo.name()+" / Posicion X:"+posPieza.x+" Y:"+posPieza.y+" / LP:"+LP;
+        return "Pieza: "+tipo.name()+" / Posicion X:"+posPieza.x+" Y:"+posPieza.y+" / LP:"+LP+" / "+((nPlayer)? "1P" : "2P");
     }
 }
