@@ -1,4 +1,6 @@
-Proyecto Programacion II
+=============================
+
+  Proyecto Programaci—n II
 
 =============================
 
@@ -16,19 +18,33 @@ Proyecto Programacion II
 
 Change Log 
 
+0.3 - 7/6/2012
+
+[Ivan Suazo]
+- Cambio de Branch
+- Implementaci—n gr‡fica
+- Menu de Entrada (ventanaGame)
+- Tablero Grafico (tableroGame)
+- Im‡genes de piezas
+- Implementation de Labels HP en Iconos
+- Agregado menœ debut para pruebas
+- Invocation de Zombies implementado (Debug)
+
 0.2 - 6/6/2012
 
-- Acutualizada verificacion de movimientos
+[Ivan Suazo]
+- Actualizada verificaci—n de movimientos
 - Agregado el Tablero
-- Funcion TwoPlayers
+- Funci—n TwoPlayers
 - Funciones Random Jugador
-- Inicializacion de piezas en el tablero
-- Verificacion de Usuarios
-- Optimizacion de Codigo
+- Inicializaci—n de piezas en el tablero
+- Verificaci—n de Usuarios
+- Optimizaron de C—digo
 
 0.1 - 5/6/2012
 
+[Ivan Suazo]
 - Agregada las piezas
 - Agregada las funciones de ataques
-- Se inizializa el proyecto
-- Codigo Volatil para uso externo
+- Se iniciativa el proyecto
+- C—digo Vol‡til para uso externo

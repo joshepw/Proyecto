@@ -8,12 +8,13 @@ package proyecto;
  *
  * @author JoXhe
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class ventanaGame extends javax.swing.JFrame {
 
     /**
-     * Creates new form NewJFrame
+     * Creates new form ventanaGame
      */
-    public NewJFrame() {
+    
+    public ventanaGame() {
         initComponents();
     }
 
@@ -26,21 +27,48 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        newGame = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Vampire WarsGame");
+        setMaximumSize(new java.awt.Dimension(500, 300));
+        setMinimumSize(new java.awt.Dimension(500, 300));
+        setName("ventanaMain");
+        setPreferredSize(new java.awt.Dimension(500, 300));
+
+        newGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu1.png"))); // NOI18N
+        newGame.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                newGameMouseClicked(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 400, Short.MAX_VALUE)
+            .add(layout.createSequentialGroup()
+                .add(19, 19, 19)
+                .add(newGame)
+                .addContainerGap(213, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 300, Short.MAX_VALUE)
+            .add(layout.createSequentialGroup()
+                .add(42, 42, 42)
+                .add(newGame)
+                .addContainerGap(289, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void newGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newGameMouseClicked
+           tableroGame tab = new tableroGame();
+           tab.setVisible(true);
+           tab.tableroNewGame();
+           
+    }//GEN-LAST:event_newGameMouseClicked
 
     /**
      * @param args the command line arguments
@@ -63,26 +91,29 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ventanaGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /*
          * Create and display the form
          */
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new NewJFrame().setVisible(true);
+                new ventanaGame().setVisible(true);
+                
             }
         });
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton newGame;
     // End of variables declaration//GEN-END:variables
 }
