@@ -64,9 +64,8 @@ public class ventanaGame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void newGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newGameMouseClicked
-           tableroGame tab = new tableroGame();
+           tableroGame tab = new tableroGame("PEPE","KARLA");
            tab.setVisible(true);
-           tab.tableroNewGame();
            
     }//GEN-LAST:event_newGameMouseClicked
 

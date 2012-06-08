@@ -14,12 +14,15 @@ import javax.swing.JOptionPane;
 public class tableroGame extends java.awt.Frame {
     private JLabel[][] piezaLab;
     private JLabel[][] piezaHP;
-    Tablero tb = new Tablero("Jose","Carlos");
+    Tablero tb;
+    int myX,myY,attX,attY;
     /**
      * Creates new form tableroGame
      */
-    public tableroGame() {
+    public tableroGame(String name1P,String name2P) {
         initComponents();
+        
+        tableroNewGame(name1P,name2P);
     }
 
     /**
@@ -37,8 +40,18 @@ public class tableroGame extends java.awt.Frame {
         zombieX = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         zombieY = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        invocar = new javax.swing.JButton();
         if1P = new javax.swing.JComboBox();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        piezaDataAttack = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        piezaData = new javax.swing.JTextArea();
+        is1P = new javax.swing.JCheckBox();
+        canAttack = new javax.swing.JCheckBox();
+        attack = new javax.swing.JButton();
+        mover = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -56,70 +69,96 @@ public class tableroGame extends java.awt.Frame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true), "Debug Menu", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Abadi MT Condensed Light", 0, 14))); // NOI18N
         jPanel1.setToolTipText("Debug Menu");
         jPanel1.setName("Debug Menu");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("ZOMBIE");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         jLabel2.setText("X : ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         zombieX.setText("--");
+        jPanel1.add(zombieX, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, -1, -1));
 
         jLabel3.setText("Y : ");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
 
         zombieY.setText("--");
+        jPanel1.add(zombieY, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
 
-        jButton1.setText("Invocar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        invocar.setText("Invocar");
+        invocar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                invocarMouseClicked(evt);
             }
         });
+        jPanel1.add(invocar, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 94, 208, -1));
 
         if1P.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1P", "2P" }));
+        jPanel1.add(if1P, new org.netbeans.lib.awtextra.AbsoluteConstraints(149, 55, -1, -1));
 
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(13, 13, 13)
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel1)
-                            .add(jPanel1Layout.createSequentialGroup()
-                                .add(jLabel2)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(zombieX, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                                .add(jLabel3)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(zombieY, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(7, 7, 7)
-                                .add(if1P, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                        .add(0, 4, Short.MAX_VALUE))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel1)
-                .add(10, 10, 10)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
-                    .add(zombieX, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel3)
-                    .add(zombieY, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(if1P, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(jButton1)
-                .addContainerGap())
-        );
+        jLabel4.setText("ATACAR A / POS. A MOVER");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 230, 330));
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        piezaDataAttack.setBackground(javax.swing.UIManager.getDefaults().getColor("Panel.background"));
+        piezaDataAttack.setColumns(20);
+        piezaDataAttack.setEditable(false);
+        piezaDataAttack.setLineWrap(true);
+        piezaDataAttack.setRows(5);
+        piezaDataAttack.setText("Ninguna");
+        jScrollPane2.setViewportView(piezaDataAttack);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 186, 54));
+
+        jLabel5.setText("PIEZA SELECCIONADA");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
+
+        jScrollPane3.setBorder(null);
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        piezaData.setBackground(javax.swing.UIManager.getDefaults().getColor("Panel.background"));
+        piezaData.setColumns(20);
+        piezaData.setEditable(false);
+        piezaData.setLineWrap(true);
+        piezaData.setRows(5);
+        piezaData.setText("Ninguna");
+        jScrollPane3.setViewportView(piezaData);
+
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 186, 54));
+
+        is1P.setText("... 1P?");
+        is1P.setActionCommand("... puede atacar?");
+        is1P.setEnabled(false);
+        jPanel1.add(is1P, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 80, -1));
+
+        canAttack.setText("... Accion?");
+        canAttack.setActionCommand("... accion?");
+        jPanel1.add(canAttack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
+
+        attack.setText("Atacar");
+        attack.setEnabled(false);
+        attack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                attackMouseClicked(evt);
+            }
+        });
+        jPanel1.add(attack, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 100, -1));
+
+        mover.setText("Mover");
+        mover.setEnabled(false);
+        mover.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                moverMouseClicked(evt);
+            }
+        });
+        jPanel1.add(mover, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 100, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 230, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -129,25 +168,93 @@ public class tableroGame extends java.awt.Frame {
      */
     private void exitForm(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_exitForm
         System.exit(0);
+        
     }//GEN-LAST:event_exitForm
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        // TODO add your handling code here:
-        int x = Integer.parseInt(zombieX.getText());
-        int y = Integer.parseInt(zombieY.getText());
-        if(tb.Piezas[x][y]==null){
-            boolean player = (((String)if1P.getSelectedItem()).equals("1P")? true : false);
-            tb.Piezas[x][y] = new piezaZombie(x,y,player);
-            setHPtxt(x,y);
-            setIconPos(x,y);
-        }else{
-            JOptionPane.showMessageDialog(null, "Esta posicion esta ocupada!" , "Alerta", y);
+/* ===============
+ *   DEBUG DEBUG
+ * ===============
+ */
+    private void invocarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invocarMouseClicked
+        try{
+            int x = Integer.parseInt(zombieX.getText());
+            int y = Integer.parseInt(zombieY.getText());
+            if(tb.Piezas[x][y]==null){
+                boolean player = (((String)if1P.getSelectedItem()).equals("1P")? true : false);
+                tb.Piezas[x][y] = new piezaZombie(x,y,player);
+                setHPtxt(x,y);
+                setIconPos(x,y);
+            }else{
+                JOptionPane.showMessageDialog(null, "Esta posicion esta ocupada!" , "Alerta", 0);
+            }
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Los datos son incorrectos" , "Alerta", 0);
         }
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_invocarMouseClicked
 
+    private void attackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_attackMouseClicked
+        if(tb.piezaAttack(tb.Piezas[myX][myY], tb.Piezas[attX][attY])){
+            if(tb.Piezas[attX][attY].getLP()<=0)
+                tb.Piezas[attX][attY] = null;
+            updatePieza(myX,myY);
+            updatePieza(attX,attY);
+            attack.setEnabled(false);
+            piezaData.setText("Ninguno");
+            piezaDataAttack.setText("Ninguno");
+            canAttack.setSelected(false);
+        }       
+    }//GEN-LAST:event_attackMouseClicked
+
+    private void moverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_moverMouseClicked
+        if(tb.movePieza(myX, myY, attX, attY)){
+            updatePieza(myX,myY);
+            updatePieza(attX,attY);
+            mover.setEnabled(false);
+            piezaData.setText("Ninguno");
+            piezaDataAttack.setText("Ninguno");
+            canAttack.setSelected(false);
+        }
+    }//GEN-LAST:event_moverMouseClicked
+
+    private void piezaLabMouseClicked(java.awt.event.MouseEvent evt,int x, int y) {
+        if(!canAttack.isSelected()){
+            if(tb.Piezas[x][y]!=null){
+                piezaData.setText(tb.Piezas[x][y].toString());
+                canAttack.setSelected((tb.Piezas[x][y].tipo!=piezaTipo.ZOMBIE)? true : false);
+                is1P.setSelected(tb.Piezas[x][y].nPlayer);
+                myX = x;
+                myY = y;
+            }else{
+                piezaData.setText("Espacio en Blanco\nPosicion X:"+x+" Y:"+y);
+                canAttack.setSelected(false);
+                is1P.setSelected(false);
+            }
+        }else{
+            if(tb.Piezas[x][y]!=null){
+                mover.setEnabled(false);
+                piezaDataAttack.setText(tb.Piezas[x][y].toString());
+                if(tb.Piezas[x][y].nPlayer!=is1P.isSelected()){
+                    attack.setEnabled(true);
+                    attX = x;
+                    attY = y;
+                }
+            }else{
+                piezaDataAttack.setText("Espacio en Blanco\nPosicion X:"+x+" Y:"+y);
+                attack.setEnabled(false);
+                mover.setEnabled(true);
+                attX = x;
+                attY = y;
+            }
+        }
+    }
+    /*
+     * ===============
+     *    FIN DEBUG
+     * ===============
+     */
     
-    public void tableroNewGame() {
-        // TODO add your handling code here:
+    private void tableroNewGame(String name1P, String name2P) {
+        setTitle("Tablero - "+name1P+" Vrs. "+name2P);
+        tb = new Tablero(name1P,name2P);
         piezaLab = new javax.swing.JLabel[6][6];
         piezaHP = new javax.swing.JLabel[6][6];
         int xpos = 30;
@@ -160,8 +267,10 @@ public class tableroGame extends java.awt.Frame {
             xpos = 30;
             ypos = ypos+100;
         }
+        
     }
-    public void tableroPieza(int x,int y,int xpos,int ypos) {
+    
+    public void tableroPieza(final int x,final int y,int xpos,int ypos) {
         
         piezaHP[x][y] = new javax.swing.JLabel();
         piezaHP[x][y].setFont(new java.awt.Font("Bauhaus 93", 0, 18));
@@ -169,18 +278,28 @@ public class tableroGame extends java.awt.Frame {
         piezaHP[x][y].setSize(new java.awt.Dimension(30, 30));
         piezaHP[x][y].setText("");
         piezaHP[x][y].setForeground(new java.awt.Color(255, 255, 255));
-        add(piezaHP[x][y], new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        piezaHP[x][y].setLocation(xpos+8, ypos+70);
+        add(piezaHP[x][y], new org.netbeans.lib.awtextra.AbsoluteConstraints(xpos+8, ypos+70, -1, -1));
         setHPtxt(x,y);
 
         piezaLab[x][y] = new javax.swing.JLabel();
         piezaLab[x][y].setPreferredSize(new java.awt.Dimension(100, 100));
         piezaLab[x][y].setSize(new java.awt.Dimension(100, 100));
         piezaLab[x][y].setText(null);
-        add(piezaLab[x][y], new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-        piezaLab[x][y].setLocation(xpos, ypos);
+        add(piezaLab[x][y], new org.netbeans.lib.awtextra.AbsoluteConstraints(xpos, ypos, -1, -1));
         setIconPos(x,y);
-
+        
+        piezaLab[x][y].addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                piezaLabMouseClicked(evt,x,y);
+            }
+        });
+        
+    }
+    
+    public void updatePieza(int x,int y){
+        setHPtxt(x,y);
+        setIconPos(x,y);
     }
     
     public void setHPtxt(int x,int y){
@@ -219,25 +338,34 @@ public class tableroGame extends java.awt.Frame {
     
     /**
      * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                tableroGame newT = new tableroGame();
+                tableroGame newT = new tableroGame("JOSE","CARLOS");
                 newT.setVisible(true);
-                newT.tableroNewGame();
             }
         });
-    }
+    }*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton attack;
+    private javax.swing.JCheckBox canAttack;
     private javax.swing.JComboBox if1P;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton invocar;
+    private javax.swing.JCheckBox is1P;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton mover;
+    private javax.swing.JTextArea piezaData;
+    private javax.swing.JTextArea piezaDataAttack;
     private javax.swing.JTextField zombieX;
     private javax.swing.JTextField zombieY;
     // End of variables declaration//GEN-END:variables
