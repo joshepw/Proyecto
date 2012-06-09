@@ -18,6 +18,21 @@
 
 Change Log 
 
+0.4 - 9/6/2012
+
+[Ivan Suazo]
+- Se integra toda la interfaz en una sola ventana
+- Se crean un menu
+- Se crean Paneles para cada opci—n de menu
+- Se integra control de menu con Paneles
+- Nueva libreria de gr‡ficos
+- Se reducen tamango de piezas y se mejora la calidad
+- Paneles Trasnlucidos
+- Creacion de plantillas segœn panel
+- Integrada la idea de Partidas
+- Integracion de Piezas completas
+- Actualizado el c—digo de graficos
+
 0.3 - 7/6/2012
 
 [Ivan Suazo]

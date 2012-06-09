@@ -4,6 +4,9 @@
  */
 package proyecto;
 
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author JoXhe
@@ -13,11 +16,22 @@ public class ventanaGame extends javax.swing.JFrame {
     /**
      * Creates new form ventanaGame
      */
+    private boolean isPlayable = true;    
+    private JLabel[][] piezaLab;
+    private JLabel[][] piezaHP;
+    Tablero tb;
+    int myX,myY,attX,attY;
     
     public ventanaGame() {
         initComponents();
+        playPanel.setVisible(false);
+        statusPanel.setVisible(false);
+        userPanel.setVisible(false);
+        prefPanel.setVisible(false);
+        nowPanel.setVisible(false);
+        tableroNewGame("A","B");
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,51 +41,378 @@ public class ventanaGame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        newGame = new javax.swing.JButton();
+        mainPanel = new javax.swing.JPanel();
+        menuBtn = new javax.swing.JLabel();
+        playBtn = new javax.swing.JLabel();
+        statusBtn = new javax.swing.JLabel();
+        userBtn = new javax.swing.JLabel();
+        prefBtn = new javax.swing.JLabel();
+        nowBtn = new javax.swing.JLabel();
+        homePanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        playPanel = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        statusPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jLabel4 = new javax.swing.JLabel();
+        userPanel = new javax.swing.JPanel();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
+        prefPanel = new javax.swing.JPanel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        nowPanel = new javax.swing.JPanel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vampire WarsGame");
-        setMaximumSize(new java.awt.Dimension(500, 300));
-        setMinimumSize(new java.awt.Dimension(500, 300));
+        setBounds(new java.awt.Rectangle(0, 0, 952, 560));
+        setMaximumSize(new java.awt.Dimension(940, 560));
+        setMinimumSize(new java.awt.Dimension(940, 560));
         setName("ventanaMain");
-        setPreferredSize(new java.awt.Dimension(500, 300));
+        setPreferredSize(new java.awt.Dimension(940, 560));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        newGame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu1.png"))); // NOI18N
-        newGame.addMouseListener(new java.awt.event.MouseAdapter() {
+        mainPanel.setMinimumSize(new java.awt.Dimension(952, 560));
+        mainPanel.setPreferredSize(new java.awt.Dimension(952, 560));
+        mainPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        menuBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/HOME_MENU_PRESS.jpg"))); // NOI18N
+        menuBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                newGameMouseClicked(evt);
+                menuBtnMouseClicked(evt);
+            }
+        });
+        mainPanel.add(menuBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 202, 42));
+
+        playBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/PLAY_MENU_UNPRESS.jpg"))); // NOI18N
+        playBtn.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/PLAY_MENU_DISABLE.jpg"))); // NOI18N
+        playBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                playBtnMouseClicked(evt);
+            }
+        });
+        mainPanel.add(playBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 42, 202, 42));
+
+        statusBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/STATUS_MENU_UNPRESS.jpg"))); // NOI18N
+        statusBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                statusBtnMouseClicked(evt);
+            }
+        });
+        mainPanel.add(statusBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 84, 202, 42));
+
+        userBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/USER_MENU_UNPRESS.jpg"))); // NOI18N
+        userBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                userBtnMouseClicked(evt);
+            }
+        });
+        mainPanel.add(userBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 126, 202, 42));
+
+        prefBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/PREF_MENU_UNPRESS.jpg"))); // NOI18N
+        prefBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prefBtnMouseClicked(evt);
+            }
+        });
+        mainPanel.add(prefBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 168, 202, 42));
+
+        nowBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/NOW_MENU_UNPRESS.jpg"))); // NOI18N
+        nowBtn.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/NOW_MENU_DISABLE.jpg"))); // NOI18N
+        nowBtn.setEnabled(false);
+        nowBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nowBtnMouseClicked(evt);
+            }
+        });
+        mainPanel.add(nowBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 202, 42));
+
+        homePanel.setOpaque(false);
+        homePanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                homePanelComponentShown(evt);
+            }
+        });
+        homePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/HOME_BG.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        homePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 560));
+
+        mainPanel.add(homePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 0, 750, 580));
+
+        playPanel.setOpaque(false);
+        playPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                playPanelComponentShown(evt);
+            }
+        });
+        playPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/PLAY_BG.png"))); // NOI18N
+        playPanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 560));
+
+        mainPanel.add(playPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 0, 750, 580));
+
+        statusPanel.setOpaque(false);
+        statusPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                statusPanelComponentShown(evt);
             }
         });
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(19, 19, 19)
-                .add(newGame)
-                .addContainerGap(213, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(42, 42, 42)
-                .add(newGame)
-                .addContainerGap(289, Short.MAX_VALUE))
-        );
+        jLabel1.setText("dshdfhdfgdfgsdf");
+        jLabel1.setMaximumSize(new java.awt.Dimension(400, 16));
+        jLabel1.setMinimumSize(new java.awt.Dimension(400, 16));
+        statusPanel.add(jLabel1);
+        statusPanel.add(jTabbedPane1);
+
+        jLabel4.setText("jLabel4");
+        statusPanel.add(jLabel4);
+
+        mainPanel.add(statusPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 0, 750, 580));
+
+        userPanel.setOpaque(false);
+        userPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                userPanelComponentShown(evt);
+            }
+        });
+        userPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jInternalFrame1.setVisible(true);
+        userPanel.add(jInternalFrame1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        mainPanel.add(userPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 0, 750, 580));
+
+        prefPanel.setOpaque(false);
+        prefPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                prefPanelComponentShown(evt);
+            }
+        });
+        prefPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPasswordField1.setText("jPasswordField1");
+        prefPanel.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        mainPanel.add(prefPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 0, 750, 580));
+
+        nowPanel.setFont(new java.awt.Font("Eurostile", 1, 14)); // NOI18N
+        nowPanel.setOpaque(false);
+        nowPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                nowPanelComponentShown(evt);
+            }
+        });
+        nowPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        mainPanel.add(nowPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 0, 750, 580));
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/background.jpg"))); // NOI18N
+        mainPanel.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 580));
+
+        getContentPane().add(mainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 952, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void newGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newGameMouseClicked
-           tableroGame tab = new tableroGame("PEPE","KARLA");
-           tab.setVisible(true);
-           
-    }//GEN-LAST:event_newGameMouseClicked
+    private void menuBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuBtnMouseClicked
+        homePanel.setVisible(true);   
+    }//GEN-LAST:event_menuBtnMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
+    private void playBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playBtnMouseClicked
+        playPanel.setVisible(true);
+    }//GEN-LAST:event_playBtnMouseClicked
+
+    private void statusBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_statusBtnMouseClicked
+        statusPanel.setVisible(true);
+    }//GEN-LAST:event_statusBtnMouseClicked
+
+    private void userBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userBtnMouseClicked
+        userPanel.setVisible(true);
+    }//GEN-LAST:event_userBtnMouseClicked
+
+    private void prefBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prefBtnMouseClicked
+        prefPanel.setVisible(true);
+    }//GEN-LAST:event_prefBtnMouseClicked
+
+    private void nowBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nowBtnMouseClicked
+        nowPanel.setVisible(true);
+    }//GEN-LAST:event_nowBtnMouseClicked
+
+    private void playPanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_playPanelComponentShown
+        homePanel.setVisible(false);
+        statusPanel.setVisible(false);
+        userPanel.setVisible(false);
+        prefPanel.setVisible(false);
+        nowPanel.setVisible(false);
+        setMenuIcon("PLAY");
+    }//GEN-LAST:event_playPanelComponentShown
+
+    private void statusPanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_statusPanelComponentShown
+        homePanel.setVisible(false);
+        playPanel.setVisible(false);   
+        userPanel.setVisible(false);
+        prefPanel.setVisible(false);
+        nowPanel.setVisible(false);
+        setMenuIcon("STATUS");
+    }//GEN-LAST:event_statusPanelComponentShown
+
+    private void userPanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_userPanelComponentShown
+        homePanel.setVisible(false);
+        playPanel.setVisible(false);
+        statusPanel.setVisible(false);
+        prefPanel.setVisible(false);
+        nowPanel.setVisible(false);
+        setMenuIcon("USER");
+    }//GEN-LAST:event_userPanelComponentShown
+
+    private void prefPanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_prefPanelComponentShown
+        homePanel.setVisible(false);
+        playPanel.setVisible(false);
+        statusPanel.setVisible(false);
+        userPanel.setVisible(false);
+        nowPanel.setVisible(false);
+        setMenuIcon("PREF");
+    }//GEN-LAST:event_prefPanelComponentShown
+
+    private void nowPanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_nowPanelComponentShown
+        homePanel.setVisible(false);
+        playPanel.setVisible(false);
+        statusPanel.setVisible(false);
+        userPanel.setVisible(false);
+        prefPanel.setVisible(false);
+        setMenuIcon("NOW");
+    }//GEN-LAST:event_nowPanelComponentShown
+
+    private void homePanelComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_homePanelComponentShown
+        playPanel.setVisible(false);
+        statusPanel.setVisible(false);
+        userPanel.setVisible(false);
+        prefPanel.setVisible(false);
+        nowPanel.setVisible(false);
+        setMenuIcon("HOME");
+    }//GEN-LAST:event_homePanelComponentShown
+
+
+    private void piezaLabMouseClicked(java.awt.event.MouseEvent evt,int x, int y) {
+        /*if(!canAttack.isSelected()){
+            if(tb.Piezas[x][y]!=null){
+                piezaData.setText(tb.Piezas[x][y].toString());
+                canAttack.setSelected((tb.Piezas[x][y].tipo!=piezaTipo.ZOMBIE)? true : false);
+                is1P.setSelected(tb.Piezas[x][y].nPlayer);
+                myX = x;
+                myY = y;
+            }else{
+                piezaData.setText("Espacio en Blanco\nPosicion X:"+x+" Y:"+y);
+                canAttack.setSelected(false);
+                is1P.setSelected(false);
+            }
+        }else{
+            if(tb.Piezas[x][y]!=null){
+                mover.setEnabled(false);
+                piezaDataAttack.setText(tb.Piezas[x][y].toString());
+                if(tb.Piezas[x][y].nPlayer!=is1P.isSelected()){
+                    attack.setEnabled(true);
+                    attX = x;
+                    attY = y;
+                }
+            }else{
+                piezaDataAttack.setText("Espacio en Blanco\nPosicion X:"+x+" Y:"+y);
+                attack.setEnabled(false);
+                mover.setEnabled(true);
+                attX = x;
+                attY = y;
+            }
+        }*/
+        JOptionPane.showMessageDialog(null, "X: "+x+" / Y: "+y , "Alerta", 0);
+    }
+ 
+    private void tableroNewGame(String name1P, String name2P) {
+        setTitle("Vampire WarGame - "+name1P+" Vrs. "+name2P);
+        tb = new Tablero(name1P,name2P);
+        piezaLab = new javax.swing.JLabel[6][6];
+        piezaHP = new javax.swing.JLabel[6][6];
+        int xpos = 14;
+        int ypos = 12;
+        for(int x=0;x<6;x++){
+            for(int y=0;y<6;y++){
+                tableroPieza(x,y,xpos,ypos);
+                xpos = xpos+84;
+            }
+            xpos = 10;
+            ypos = ypos+86;
+        }
+        
+    }
+    
+    public void tableroPieza(final int x,final int y,int xpos,int ypos) {
+        
+        piezaHP[x][y] = new javax.swing.JLabel();
+        piezaHP[x][y].setFont(new java.awt.Font("Eurostile", 1, 12));
+        piezaHP[x][y].setPreferredSize(new java.awt.Dimension(30, 30));
+        piezaHP[x][y].setSize(new java.awt.Dimension(30, 30));
+        piezaHP[x][y].setText("");
+        piezaHP[x][y].setForeground(new java.awt.Color(255, 255, 255));
+        nowPanel.add(piezaHP[x][y], new org.netbeans.lib.awtextra.AbsoluteConstraints(xpos+7, ypos+50, -1, -1));
+        setHPtxt(x,y);
+
+        piezaLab[x][y] = new javax.swing.JLabel();
+        piezaLab[x][y].setPreferredSize(new java.awt.Dimension(80, 80));
+        piezaLab[x][y].setSize(new java.awt.Dimension(80, 80));
+        piezaLab[x][y].setText(null);
+        nowPanel.add(piezaLab[x][y], new org.netbeans.lib.awtextra.AbsoluteConstraints(xpos, ypos, -1, -1));
+        setIconPos(x,y,"");
+        
+        piezaLab[x][y].addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                piezaLabMouseClicked(evt,x,y);
+            }
+        });
+        
+    }
+    
+    public void updatePieza(int x,int y){
+        setHPtxt(x,y);
+        setIconPos(x,y,"");
+    }
+    
+    public void setHPtxt(int x,int y){
+        if(tb.Piezas[x][y]!=null){
+            piezaHP[x][y].setText(""+((tb.Piezas[x][y].getLP()<10)?"0":"")+tb.Piezas[x][y].getLP());
+        }else{
+            piezaHP[x][y].setText("");
+        }
+    }
+    
+    public void setIconPos(int x,int y,String acc){
+        if(tb.Piezas[x][y]!=null){
+            if(tb.Piezas[x][y].nPlayer){
+                if(tb.Piezas[x][y].tipo == piezaTipo.WOLF)
+                    piezaLab[x][y].setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/wolfBlack"+acc+".png")));
+                if(tb.Piezas[x][y].tipo == piezaTipo.VAMPIRE)
+                    piezaLab[x][y].setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/vampireBlack"+acc+".png")));
+                if(tb.Piezas[x][y].tipo == piezaTipo.DEATH)
+                    piezaLab[x][y].setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/deathBlack"+acc+".png")));
+                if(tb.Piezas[x][y].tipo == piezaTipo.ZOMBIE)
+                    piezaLab[x][y].setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/zombieBlack"+acc+".png")));
+            }else{
+                if(tb.Piezas[x][y].tipo == piezaTipo.WOLF)
+                    piezaLab[x][y].setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/wolfWhite"+acc+".png")));
+                if(tb.Piezas[x][y].tipo == piezaTipo.VAMPIRE)
+                    piezaLab[x][y].setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/vampireWhite"+acc+".png")));
+                if(tb.Piezas[x][y].tipo == piezaTipo.DEATH)
+                    piezaLab[x][y].setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/deathWhite"+acc+".png")));
+                if(tb.Piezas[x][y].tipo == piezaTipo.ZOMBIE)
+                    piezaLab[x][y].setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/zombieWhite"+acc+".png")));
+            }
+        }else{
+            piezaLab[x][y].setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/piece"+acc+".png")));
+        }
+    }
+    
     public static void main(String args[]) {
         /*
          * Set the Nimbus look and feel
@@ -113,6 +454,65 @@ public class ventanaGame extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton newGame;
+    private javax.swing.JLabel background;
+    private javax.swing.JPanel homePanel;
+    private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JLabel menuBtn;
+    private javax.swing.JLabel nowBtn;
+    private javax.swing.JPanel nowPanel;
+    private javax.swing.JLabel playBtn;
+    private javax.swing.JPanel playPanel;
+    private javax.swing.JLabel prefBtn;
+    private javax.swing.JPanel prefPanel;
+    private javax.swing.JLabel statusBtn;
+    private javax.swing.JPanel statusPanel;
+    private javax.swing.JLabel userBtn;
+    private javax.swing.JPanel userPanel;
     // End of variables declaration//GEN-END:variables
+    private void setMenuIcon(String menu){
+        if(menu.equals("HOME"))
+            menuBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/HOME_MENU_PRESS.jpg")));
+        else
+            menuBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/HOME_MENU_UNPRESS.jpg")));
+        if(menu.equals("PLAY")){
+            playBtn.setEnabled(true);
+            playBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/PLAY_MENU_PRESS.jpg")));         
+        }
+        else if(!isPlayable)
+            playBtn.setEnabled(false);
+        else{           
+            playBtn.setEnabled(true);
+            playBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/PLAY_MENU_UNPRESS.jpg")));
+        }
+        if(menu.equals("STATUS"))
+            statusBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/STATUS_MENU_PRESS.jpg")));
+        else
+            statusBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/STATUS_MENU_UNPRESS.jpg")));
+        if(menu.equals("USER"))
+            userBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/USER_MENU_PRESS.jpg")));
+        else
+            userBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/USER_MENU_UNPRESS.jpg")));
+        if(menu.equals("PREF"))
+            prefBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/PREF_MENU_PRESS.jpg")));
+        else
+            prefBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/PREF_MENU_UNPRESS.jpg")));
+        if(menu.equals("NOW")){
+            nowBtn.setEnabled(true);
+            nowBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/NOW_MENU_PRESS.jpg")));         
+        }
+        else if(!isPlayable)
+            nowBtn.setEnabled(true);
+        else{           
+            nowBtn.setEnabled(false);
+            nowBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/NOW_MENU_UNPRESS.jpg")));
+        }
+    }
+
 }
