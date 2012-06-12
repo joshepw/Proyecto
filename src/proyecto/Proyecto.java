@@ -4,7 +4,7 @@ public class Proyecto {
 
     static Tablero mv = new Tablero("Jose","Carlos");
     
-    public static void main(String[] args) {      
+    /*public static void main(String[] args) {      
         
         System.out.println(mv.Piezas[0][4]);
         System.out.println(mv.Piezas[5][0]);
@@ -43,7 +43,7 @@ public class Proyecto {
         imprimirTablero();
         
         System.out.println(mv.Piezas[3][2]);
-    }
+    }*/
     
     public static void imprimirTablero(){
         System.out.println("\n TABLERO \n    --Y0-- --Y1-- --Y2-- --Y3-- --Y4-- --Y5--\n");

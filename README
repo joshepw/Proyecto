@@ -18,6 +18,23 @@
 
 Change Log 
 
+0.6 - 12/6/2012
+
+[Ivan Suazo]
+- Cambio de dimenciones de pantallas
+- Integracion de gestion de usuarios
+- Integracion de partida nueva
+- Nuevos gr‡ficos
+- Implementado las operaciones con archivos
+- Cambio de branch [ GUI Game ]
+- Status de Modulos:
+	PORTADA : 80% [ Faltan eventos de botones ]
+	JUGAR PARTIDA : 50% [ Solo nuevas partidas ]
+	ESTADISTICAS : 0% [ No se a implementado ]
+	PERFILES : 90% [ Falta edicion de datos ]  
+	OPCIONES : 25% [ Faltan 3 Opciones y graficos ]
+	ACTUAL PARTIDA : 65% [ Fantan botones de interacion ]
+
 0.4 - 9/6/2012
 
 [Ivan Suazo]
