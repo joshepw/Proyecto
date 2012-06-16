@@ -176,7 +176,7 @@ public class fileAccess {
                 temp.setActiva(partida.readBoolean());
                 for(int x=0;x<6;x++){
                     for(int y=0;y<6;y++){
-                        temp.setPieza(partida.readUTF(), partida.readInt(), x, y, partida.readBoolean());
+                        temp.setPieza(partida.readUTF(), partida.readInt(), x, y, partida.readUTF(),partida.readUTF());
                     }
                 }
                 partida.close();
@@ -210,7 +210,8 @@ public class fileAccess {
                     for(int y=0;y<6;y++){
                         partida.writeUTF(temp.getPiezaTipo(x, y));
                         partida.writeInt(temp.getPiezaLP(x, y));
-                        partida.writeBoolean(temp.getPiezaPlayer(x, y));                        
+                        partida.writeUTF(temp.getPiezaPlayer(x, y));
+                        partida.writeUTF(temp.getPiezaColor(x, y));
                     }
                 }
                 partida.close();

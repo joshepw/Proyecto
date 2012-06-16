@@ -4,9 +4,9 @@ import java.util.Random;
 
 public class Tablero {
     
-    public static final Position posOneMove[] = {new Position(1,-1),new Position(1,0),new Position(1,1),new Position(0,-1),new Position(0,1),new Position(-1,-1),new Position(-1,0),new Position(-1,1)};
-    public static final Position posTwoMoves[] = {new Position(2,-2),new Position(2,0),new Position(2,2),new Position(0,-2),new Position(0,2),new Position(-2,-2),new Position(-2,0),new Position(-2,2)};
-    public static final Position posLMove[] = {new Position(1,-2),new Position(2,-1),new Position(2,1),new Position(1,2),new Position(-1,-2),new Position(-2,-1),new Position(-2,1),new Position(-1,2)};
+    private static final Position posOneMove[] = {new Position(1,-1),new Position(1,0),new Position(1,1),new Position(0,-1),new Position(0,1),new Position(-1,-1),new Position(-1,0),new Position(-1,1)};
+    private static final Position posTwoMoves[] = {new Position(2,-2),new Position(2,0),new Position(2,2),new Position(0,-2),new Position(0,2),new Position(-2,-2),new Position(-2,0),new Position(-2,2)};
+    private static final Position posLMove[] = {new Position(1,-2),new Position(2,-1),new Position(2,1),new Position(1,2),new Position(-1,-2),new Position(-2,-1),new Position(-2,1),new Position(-1,2)};
     
     public Pieza Piezas[][];
     Random suffle = new Random();
@@ -14,9 +14,7 @@ public class Tablero {
     
     public Tablero(String playerA,String playerB){
         Piezas = new Pieza[6][6];
-        boolean playerBlanco = suffle.nextBoolean();
-        boolean playerNegro = (playerBlanco)? false : true;
-        if(playerBlanco){
+        if(suffle.nextBoolean()){
             player1P = playerA;
             player2P = playerB;
         }else{
@@ -24,19 +22,19 @@ public class Tablero {
             player2P = playerA;
         }
         
-        Piezas[0][0] = new piezaWolf(0,0,playerBlanco);
-        Piezas[0][1] = new piezaVampire(0,1,playerBlanco);
-        Piezas[0][2] = new piezaDeath(0,2,playerBlanco);
-        Piezas[0][3] = new piezaDeath(0,3,playerBlanco);
-        Piezas[0][4] = new piezaVampire(0,4,playerBlanco);
-        Piezas[0][5] = new piezaWolf(0,5,playerBlanco);
+        Piezas[0][0] = new piezaWolf(0,0,"1P","WHITE");
+        Piezas[0][1] = new piezaVampire(0,1,"1P","WHITE");
+        Piezas[0][2] = new piezaDeath(0,2,"1P","WHITE");
+        Piezas[0][3] = new piezaDeath(0,3,"1P","WHITE");
+        Piezas[0][4] = new piezaVampire(0,4,"1P","WHITE");
+        Piezas[0][5] = new piezaWolf(0,5,"1P","WHITE");
         
-        Piezas[5][0] = new piezaWolf(5,0,playerNegro);
-        Piezas[5][1] = new piezaVampire(5,1,playerNegro);
-        Piezas[5][2] = new piezaDeath(5,2,playerNegro);
-        Piezas[5][3] = new piezaDeath(5,3,playerNegro);
-        Piezas[5][4] = new piezaVampire(5,4,playerNegro);
-        Piezas[5][5] = new piezaWolf(5,5,playerNegro);
+        Piezas[5][0] = new piezaWolf(5,0,"2P","BLACK");
+        Piezas[5][1] = new piezaVampire(5,1,"2P","BLACK");
+        Piezas[5][2] = new piezaDeath(5,2,"2P","BLACK");
+        Piezas[5][3] = new piezaDeath(5,3,"2P","BLACK");
+        Piezas[5][4] = new piezaVampire(5,4,"2P","BLACK");
+        Piezas[5][5] = new piezaWolf(5,5,"2P","BLACK");
         
     }
     
@@ -89,7 +87,30 @@ public class Tablero {
             return piezaAttack.setLP(miPieza.attackVampire());
         if(piezaAttack.tipo.equals(piezaTipo.DEATH))
             return piezaAttack.setLP(miPieza.attackDeath());
+        if(piezaAttack.getLP()<=0)
+            piezaAttack = null;
         return false;
+    }
+    
+    public String runDice(){
+        int tipe = suffle.nextInt(3);
+        if(tipe==0)
+            return "WOLF";
+        if(tipe==1)
+            return "VAMPIRE";
+        else
+            return "DEATH";
+    }
+    
+    public int nroPiezas(String player){
+        int i = 0;
+        for(int x=0;x<6;x++){
+            for(int y=0;y<6;y++){
+               if(Piezas[x][y].getPlayer().equals(player))
+                i++;
+            }
+        }
+        return i;
     }
     
 }

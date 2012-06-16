@@ -1,13 +1,13 @@
 package proyecto;
 
 public class piezaZombie extends Pieza{
-    public piezaZombie(int lp,int pos_x,int pos_y,boolean player){
-        super(lp,pos_x,pos_y,player);
+    public piezaZombie(int lp,int pos_x,int pos_y,String player, String color){
+        super(lp,pos_x,pos_y,player,color);
         tipo = piezaTipo.ZOMBIE;
     }
     
-    public piezaZombie(int pos_x,int pos_y,boolean player){
-        super(2,pos_x,pos_y,player);
+    public piezaZombie(int pos_x,int pos_y,String player, String color){
+        super(2,pos_x,pos_y,player,color);
         tipo = piezaTipo.ZOMBIE;
     }
 

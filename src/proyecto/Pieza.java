@@ -3,13 +3,15 @@ package proyecto;
 public abstract class Pieza {
     protected int LP;
     protected Position posPieza;
-    protected boolean nPlayer;
+    protected String Player;
     protected piezaTipo tipo;
+    protected String Color; 
     
-    public Pieza(int points,int pos_x,int pos_y,boolean player){
+    public Pieza(int points,int pos_x,int pos_y,String player,String color){
         LP = points;
         posPieza = new Position(pos_x,pos_y);
-        nPlayer = player;
+        Player = player;
+        Color = color;
     }
     
     public boolean setLP(int i){
@@ -32,8 +34,12 @@ public abstract class Pieza {
         posPieza = pos;
     }
     
-    public boolean isPlayer1P(){
-        return nPlayer;
+    public String getPlayer(){
+        return Player;
+    }
+    
+    public String getColor(){
+        return Color;
     }
     
     public abstract int attackZombie();
@@ -41,8 +47,4 @@ public abstract class Pieza {
     public abstract int attackVampire();
     public abstract int attackDeath();
     
-    @Override
-    public String toString(){
-        return "Pieza: "+tipo.name()+"\nPosicion X:"+posPieza.x+" Y:"+posPieza.y+"\nLP:"+LP+" / "+((nPlayer)? "1P" : "2P");
-    }
 }

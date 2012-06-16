@@ -530,13 +530,28 @@ public class ventanaGame extends javax.swing.JFrame {
 
         play_Att.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/play_Att.png"))); // NOI18N
         play_Att.setEnabled(false);
+        play_Att.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                play_AttMouseClicked(evt);
+            }
+        });
         nowPanel.add(play_Att, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 426, -1, -1));
 
         play_Move.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/play_Move.png"))); // NOI18N
         play_Move.setEnabled(false);
+        play_Move.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                play_MoveMouseClicked(evt);
+            }
+        });
         nowPanel.add(play_Move, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 378, -1, -1));
 
         play_Save_Chat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/play_Save.png"))); // NOI18N
+        play_Save_Chat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                play_Save_ChatMouseClicked(evt);
+            }
+        });
         nowPanel.add(play_Save_Chat, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, -1, -1));
 
         mainPanel.add(nowPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(202, 0, 750, 580));
@@ -700,6 +715,18 @@ public class ventanaGame extends javax.swing.JFrame {
     private void play_QuitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_play_QuitMouseClicked
         System.exit(0);        
     }//GEN-LAST:event_play_QuitMouseClicked
+
+    private void play_Save_ChatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_play_Save_ChatMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_play_Save_ChatMouseClicked
+
+    private void play_MoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_play_MoveMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_play_MoveMouseClicked
+
+    private void play_AttMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_play_AttMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_play_AttMouseClicked
 
     public void resetNewUserForm(){
         fullName.setForeground(new java.awt.Color(204, 204, 204));

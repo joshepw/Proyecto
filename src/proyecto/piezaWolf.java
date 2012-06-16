@@ -1,13 +1,13 @@
 package proyecto;
 
 public class piezaWolf extends Pieza{
-    public piezaWolf(int lp,int pos_x,int pos_y,boolean player){
-        super(lp,pos_x,pos_y,player);
+    public piezaWolf(int lp,int pos_x,int pos_y,String player, String color){
+        super(lp,pos_x,pos_y,player,color);
         tipo = piezaTipo.WOLF;
     }
     
-    public piezaWolf(int pos_x,int pos_y,boolean player){
-        super(10,pos_x,pos_y,player);
+    public piezaWolf(int pos_x,int pos_y,String player, String color){
+        super(10,pos_x,pos_y,player,color);
         tipo = piezaTipo.WOLF;
     }
 

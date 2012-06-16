@@ -1,13 +1,13 @@
 package proyecto;
 
 public class piezaVampire extends Pieza{
-    public piezaVampire(int lp,int pos_x,int pos_y,boolean player){
-        super(lp,pos_x,pos_y,player);
+    public piezaVampire(int lp,int pos_x,int pos_y,String player, String color){
+        super(lp,pos_x,pos_y,player,color);
         tipo = piezaTipo.VAMPIRE;
     }
     
-    public piezaVampire(int pos_x,int pos_y,boolean player){
-        super(12,pos_x,pos_y,player);
+    public piezaVampire(int pos_x,int pos_y,String player, String color){
+        super(12,pos_x,pos_y,player,color);
         tipo = piezaTipo.VAMPIRE;
     }
 

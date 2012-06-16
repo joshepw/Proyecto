@@ -53,15 +53,15 @@ public class partida {
         this.tablero = tablero;
     }
     
-    public void setPieza(String tipo,int lp,int x,int y,boolean player){
+    public void setPieza(String tipo,int lp,int x,int y,String player,String color){
         if(tipo.equals("ZOMBIE"))
-            this.tablero[x][y] = new piezaZombie(lp,x,y,player);
+            this.tablero[x][y] = new piezaZombie(lp,x,y,player,color);
         if(tipo.equals("WOLF"))
-            this.tablero[x][y] = new piezaWolf(lp,x,y,player);
+            this.tablero[x][y] = new piezaWolf(lp,x,y,player,color);
         if(tipo.equals("VAMPIRE"))
-            this.tablero[x][y] = new piezaVampire(lp,x,y,player);
+            this.tablero[x][y] = new piezaVampire(lp,x,y,player,color);
         if(tipo.equals("DEATH"))
-            this.tablero[x][y] = new piezaDeath(lp,x,y,player);
+            this.tablero[x][y] = new piezaDeath(lp,x,y,player,color);
         if(tipo.equals("NONE"))
             this.tablero[x][y] = null;
     }
@@ -74,8 +74,12 @@ public class partida {
         return tablero[x][y].getLP();
     }
     
-    public boolean getPiezaPlayer(int x,int y){
-        return tablero[x][y].nPlayer;
+    public String getPiezaPlayer(int x,int y){
+        return tablero[x][y].getPlayer();
+    }
+    
+    public String getPiezaColor(int x,int y){
+        return tablero[x][y].getColor();
     }
 
     public long getFechaInicio() {
